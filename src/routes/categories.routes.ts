@@ -1,7 +1,9 @@
 import { Request, Router } from "express";
-import { createCategoryController } from "../modules/cars/useCases/createCategory";
-import { listCategoriesController } from "../modules/cars/useCases/listCategory";
 import multer from "multer";
+import { createCategoryController } from "../modules/cars/useCases/createCategory";
+import { importCategoryController } from "../modules/cars/useCases/importCategory";
+import { ImportCategoryController } from "../modules/cars/useCases/importCategory/ImportCategoryController";
+import { listCategoriesController } from "../modules/cars/useCases/listCategory";
 
 interface IMulterRequest extends Request {
     file: any;
@@ -22,10 +24,7 @@ categoriesRoutes.post(
     "/import",
     upload.single("file"),
     (request: IMulterRequest, response) => {
-        const { file } = request;
-
-        console.log(file);
-        response.send();
+        return importCategoryController.handle(request, response);
     }
 );
 
