@@ -1,0 +1,11 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Vehicles documentation",
+        "description": "Vehicles API",
+        "version": "1.0.0",
+        "contact": {
+            "email": "123@123.com.br"
+        }
+    }
+}
