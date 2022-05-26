@@ -26,6 +26,7 @@ class ImportCategoryUseCase {
                     });
                 })
                 .on("end", () => {
+                    fs.promises.unlink(file.path);
                     resole(categories);
                 })
                 .on("erro", (err) => {
@@ -38,7 +39,6 @@ class ImportCategoryUseCase {
 
         categories.map((category) => {
             const { name, description } = category;
-
             const existCategory = this.categoriesRepository.findByName(name);
 
             if (!existCategory) {
